@@ -1,0 +1,27 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "Book store app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.devticket.ru:Boris/bookstore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^9.5.0",
+    "globals": "^15.6.0",
+    "live-server": "^1.2.2",
+    "rollup": "^4.18.0",
+    "rollup-plugin-import-css": "^3.5.0"
+  }
+}
