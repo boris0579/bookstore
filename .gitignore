@@ -13,4 +13,5 @@
 *.vsix
 
 node_modules/
+dist/
 
