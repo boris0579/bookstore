@@ -8,6 +8,10 @@ class App {
         path: '', view: MainView
     }]
 
+    appState = {
+        favorites: []
+    }
+
     // Конструктор класса App
     constructor() {
         // Добавление слушателя события 'hashchange' на объект window,
@@ -27,8 +31,9 @@ class App {
         // Поиск маршрута в массиве routes, который соответствует текущему хешу в URL
         const view = this.routes.find(p => p.path === location.hash).view
 
-        // Создание нового экземпляра найденного представления и сохранение его в currentView
-        this.currentView = new view()
+        // Создание нового экземпляра найденного представления и сохранение его в currentView,
+        // передавая в конструктор глобальное состояние
+        this.currentView = new view(this.appState)
 
         // Вызов метода render у текущего представления для отрисовки содержимого
         this.currentView.render()
