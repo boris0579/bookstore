@@ -1,6 +1,7 @@
 // Импортирование абстрактного класса AbstractView из общего модуля view
 import { AbstractView } from '../../common/view'
 import onChange from 'on-change'
+import { Header } from '../../components/header'
 
 // Определение класса MainView, который наследуется от AbstractView
 export class MainView extends AbstractView {
@@ -28,15 +29,18 @@ export class MainView extends AbstractView {
 
     // Метод render, который отвечает за отрисовку содержимого представления
     render() {
-
-        this.appState = this.appState.favorites.push('r')
         // Создание нового элемента div для основного содержимого
         const main = document.createElement('div')
-        // Установка HTML содержимого элемента main
-        main.innerHTML = `Всего книг: ${this.appState.favorites.length}`
         // Очистка содержимого элемента app (предполагается, что он определен в родительском классе)
         this.app.innerHTML = ''
+
         // Добавление элемента main в элемент app
         this.app.append(main)
+        this.renderHeader()
+    }
+
+    renderHeader() {
+        const header = new Header(this.appState).render()
+        this.app.prepend(header)
     }
 }
