@@ -28,7 +28,7 @@ export class MainView extends AbstractView {
   appStateHook (path) {
     // Следит за состоянием массива favorites
     if (path === 'favorites') {
-      console.log(path)
+      this.render()
     }
   }
 
