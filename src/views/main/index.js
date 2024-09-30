@@ -3,12 +3,13 @@ import { AbstractView } from '../../common/view'
 import onChange from 'on-change' // Библиотека за слежением изменений в обьекте
 import { Header } from '../../components/header'
 import { Search } from '../../components/search'
-import { CardList } from '../../components/card'
+import { CardList } from '../../components/card-list'
 
 // Определение класса MainView, который наследуется от AbstractView
 export class MainView extends AbstractView {
   state = {
     list: [],
+    numFound: 0,
     loading: false,
     searchQuery: '',
     offset: 0
@@ -40,6 +41,7 @@ export class MainView extends AbstractView {
         this.state.offset
       )
       this.state.list = data.docs
+      this.state.numFound = data.numFound
       this.state.loading = false
     }
 
