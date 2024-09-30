@@ -3,6 +3,7 @@ import { AbstractView } from '../../common/view'
 import onChange from 'on-change' // Библиотека за слежением изменений в обьекте
 import { Header } from '../../components/header'
 import { Search } from '../../components/search'
+import { CardList } from '../../components/card'
 
 // Определение класса MainView, который наследуется от AbstractView
 export class MainView extends AbstractView {
@@ -41,6 +42,10 @@ export class MainView extends AbstractView {
       this.state.list = data.docs
       this.state.loading = false
     }
+
+    if (path === 'list' || path === 'loading') {
+      this.render()
+    }
   }
 
   async loadList (q, offset) {
@@ -59,6 +64,8 @@ export class MainView extends AbstractView {
 
     // Добавление элемента поиск в main
     main.append(new Search(this.state).render())
+
+    main.append(new CardList(this.appState, this.state).render())
 
     // Добавление элемента main в элемент app
     this.app.append(main)
